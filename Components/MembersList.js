@@ -18,22 +18,58 @@ function MembersList({ list }) {
     }
 
     return (
-        <FlatList
-            data={list}
-            extraData={list}
-            refreshing={refreshing}
-            onRefresh={() => triggerDispatch()}
-            renderItem={({ item }) => {
-                return (
-                    <MemberCard
-                        name={item.name}
-                        amount={item.amount}
-                        id={item.id}
-                    />
-                )
-            }}
-        />
+        <>
+            {/* <View style={styles.cleanListContainer}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10 }}>Clean list?</Text>
+                <View style={styles.buttonsContainer}>
+                    <View style={[styles.button]}>
+                        <Text>Cancel</Text>
+                    </View>
+                    <View style={[styles.button]}>
+                        <Text>Clean</Text>
+                    </View>
+                </View>
+            </View> */}
+
+            <FlatList
+                data={list}
+                extraData={list}
+                refreshing={refreshing}
+                contentContainerStyle={{ paddingBottom: 150 }}
+                onRefresh={() => triggerDispatch()}
+                renderItem={({ item }) => {
+                    return (
+                        <MemberCard
+                            name={item.name}
+                            amount={item.amount}
+                            id={item.id}
+                        />
+                    )
+                }}
+            />
+        </>
     )
 }
 
-export default MembersList
+export default MembersList;
+
+const styles = StyleSheet.create({
+    cleanListContainer: {
+        width: '100%',
+        alignItems: 'center',
+        marginVertical: 10
+    },
+    buttonsContainer: {
+        width: '60%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    button: {
+        width: 100,
+        aspectRatio: 10 / 5,
+        backgroundColor: 'blue',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 15
+    }
+})

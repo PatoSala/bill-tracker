@@ -17,7 +17,7 @@ function HomeScreen() {
                 members.length > 0 ? (
                     <MembersList list={members}/>
                 ) : (
-                    <Text style={{fontSize: 25, fontWeight: 'bold', alignSelf: 'center', marginTop: 50}}>No members found</Text>
+                    <Text style={{fontSize: 25, fontWeight: 'bold', alignSelf: 'center', marginTop: 100}}>Add people to start tracking!</Text>
                 )
             }
 

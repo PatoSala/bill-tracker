@@ -29,15 +29,20 @@ function EditAmountScreen({ navigation, route }) {
                 </View>
                 <TextInput
                     style={styles.numericInput}
+                    value={value}
                     keyboardType='numeric'
-                    placeholder='0'
+                    placeholder='$0'
                     autoFocus={true}
                     caretHidden={true}
                     onChangeText={(newValue) => setValue(parseInt(newValue))}
                 />
                 <View style={styles.submitButtonContainer}>
-                    <TouchableOpacity style={[styles.button, { opacity: value > 0 ? 1 : 0.5}]} onPress={value > 0 ? handleOnPress : null}>
-                        <Text style={styles.buttonText}>Add</Text>
+                    <TouchableOpacity style={[styles.button]} onPress={() => navigation.navigate('Home')}>
+                        <Text style={[styles.buttonText, { color: 'black'}]}>Cancel</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={[styles.button, { opacity: value > 0 ? 1 : 0.5, backgroundColor: '#7978B8',}]} onPress={value > 0 ? handleOnPress : null}>
+                        <Text style={[styles.buttonText, { color: 'white'}]}>Add</Text>
                     </TouchableOpacity>
                 </View>
         </KeyboardAvoidingView>
@@ -53,7 +58,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingVertical: 40
     },
-    scrollView: {},
     memberSummary: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -80,7 +84,6 @@ const styles = StyleSheet.create({
     button: {
         width: 150,
         height: 50,
-        backgroundColor: '#7978B8',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 10
